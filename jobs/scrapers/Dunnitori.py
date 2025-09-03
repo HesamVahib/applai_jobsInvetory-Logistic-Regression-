@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import datetime as dt
 import html
-from category_predictor import categorize_job
+from ..category_predictor import categorize_job
 
 url = "https://duunitori.fi/tyopaikat"
 

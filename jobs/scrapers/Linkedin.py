@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 #from selenium.webdriver.firefox.options import Options
 import time
 import random
-from category_predictor import categorize_job
+from ..category_predictor import categorize_job
 
 # Setup Chrome Driver
 chrome_option = Options()
@@ -79,7 +79,6 @@ def jobs():
         page_counter += 10
         
         time.sleep(random.uniform(10,15))
-        break
 
     print (f"LinkedIn is updated by {counter} jobs.")
     return job_dict

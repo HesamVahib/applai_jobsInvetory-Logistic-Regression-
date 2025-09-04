@@ -3,7 +3,7 @@ from .database.models import Jobs
 from sqlalchemy.dialects.postgresql import insert
 
 try:
-    from .scrapers.Dunnitori import jobs as dunnitori_jobs
+    from jobs.scrapers.Dunnitori import jobs as dunnitori_jobs
     dunnitori = dunnitori_jobs() # Today
 except Exception as e:
     print(f"Error occurred while fetching Dunnitori jobs: {e}")
@@ -11,14 +11,14 @@ except Exception as e:
 
 
 try:
-    from .scrapers.Jobly import jobs as jobly_jobs
+    from jobs.scrapers.Jobly import jobs as jobly_jobs
     jobly = jobly_jobs() # Today
 except Exception as e:
     print(f"Error occurred while fetching Jobly jobs: {e}")
     jobly = {}
 
 try:
-    from .scrapers.Linkedin import jobs as linkedin_jobs
+    from jobs.scrapers.Linkedin import jobs as linkedin_jobs
     linkedin = linkedin_jobs() # Today
 except Exception as e:
     print(f"Error occurred while fetching Linkedin jobs: {e}")

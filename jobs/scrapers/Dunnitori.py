@@ -1,4 +1,3 @@
-from matplotlib import category
 import requests
 from bs4 import BeautifulSoup
 import datetime as dt

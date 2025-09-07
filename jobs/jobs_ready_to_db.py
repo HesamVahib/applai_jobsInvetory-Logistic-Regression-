@@ -1,6 +1,7 @@
 from .database.db_connection import session as db
 from .database.models import Jobs
 from sqlalchemy.dialects.postgresql import insert
+from jobs.database.supabase_connection import supabase
 
 try:
     from jobs.scrapers.Dunnitori import jobs as dunnitori_jobs

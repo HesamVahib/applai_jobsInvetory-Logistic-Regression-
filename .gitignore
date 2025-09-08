@@ -1,3 +1,4 @@
 .env
-/telegram.py
+__pycache__
+/.vscode
 

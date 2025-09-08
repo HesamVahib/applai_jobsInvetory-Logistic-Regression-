@@ -8,7 +8,7 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
-    env:                       # ← add this block
+    env:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}

@@ -2,6 +2,8 @@
 # from .database.models import Jobs
 # from sqlalchemy.dialects.postgresql import insert
 from jobs.database.supabase_connection import supabase
+from logger.telegram import update_message
+
 
 try:
     from jobs.scrapers.Dunnitori import jobs as dunnitori_jobs
@@ -45,10 +47,11 @@ def jobs_ready_to_db():
         ready_jobs.append(job_in_model)
 
     response = supabase.table('jobs').upsert(ready_jobs, on_conflict='link').execute()
+    update_message(f"Upserted {len(response.data)} jobs to Supabase.")
     print(f"Upserted {len(response.data)} jobs to Supabase.")
 
     ## Setup for local DB with SQLAlchemy
-    
+
     # Test
     # job_in_model = {
     #         "title": "test",

@@ -1,5 +1,5 @@
 from jobs.jobs_ready_to_db import jobs_ready_to_db
-from telegram import update_message
+from logger.telegram import update_message
 
 try:
     jobs_ready_to_db()

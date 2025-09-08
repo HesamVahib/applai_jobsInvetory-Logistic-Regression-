@@ -1,6 +1,6 @@
-from .database.db_connection import session as db
-from .database.models import Jobs
-from sqlalchemy.dialects.postgresql import insert
+# from .database.db_connection import session as db
+# from .database.models import Jobs
+# from sqlalchemy.dialects.postgresql import insert
 from jobs.database.supabase_connection import supabase
 
 try:
@@ -44,6 +44,11 @@ def jobs_ready_to_db():
         }
         ready_jobs.append(job_in_model)
 
+    response = supabase.table('jobs').upsert(ready_jobs, on_conflict='link').execute()
+    print(f"Upserted {len(response.data)} jobs to Supabase.")
+
+    ## Setup for local DB with SQLAlchemy
+    
     # Test
     # job_in_model = {
     #         "title": "test",
@@ -57,9 +62,9 @@ def jobs_ready_to_db():
     # ready_jobs.append(job_in_model)
 
 
-    stmt = insert(Jobs).values(ready_jobs)
-    stmt = stmt.on_conflict_do_nothing(index_elements=['link'])
+    # stmt = insert(Jobs).values(ready_jobs)
+    # stmt = stmt.on_conflict_do_nothing(index_elements=['link'])
 
-    db.execute(stmt)
-    db.commit()
+    # db.execute(stmt)
+    # db.commit()
 

@@ -1,17 +1,15 @@
 from supabase import create_client, Client
 import os
 
-# ------------ Load environment variables ------------
-# from dotenv import load_dotenv
+# Load environment variables (works both locally and in GitHub Actions)
+from dotenv import load_dotenv
 
-# load_dotenv()
+# Load .env file if it exists (for local development)
+load_dotenv()
 
-# supabase_url = os.getenv('SUPABASE_URL')
-# supabase_key = os.getenv('SUPABASE_KEY')
-# ---------------------------------------------------
-
-supabase_url = os.environ["SUPABASE_URL"]
-supabase_key = os.environ["SUPABASE_KEY"]
+# Try to get from environment variables (GitHub Actions or local)
+supabase_url = os.getenv('SUPABASE_URL') or os.environ.get("SUPABASE_URL")
+supabase_key = os.getenv('SUPABASE_KEY') or os.environ.get("SUPABASE_KEY")
 
 supabase: Client = create_client(supabase_url, supabase_key)
 
